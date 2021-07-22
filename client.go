@@ -201,7 +201,7 @@ func (c *client) writeMessage(m *ldap.LDAPMessage) {
 	data, _ := m.Write()
 	controls := m.Controls()
 	for i, s := range *controls {
-		Logger.Printf(">>> %d - %s - text=%s", c.Numero, m.ProtocolOpName(), s.controlValue)
+		Logger.Printf(">>> %d - %s - text=%s", c.Numero, m.ProtocolOpName(), s)
 	}
 	
 	c.bw.Write(data.Bytes())
