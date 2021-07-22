@@ -198,8 +198,7 @@ func (c *client) close() {
 
 func (c *client) writeMessage(m *ldap.LDAPMessage) {
 	data, _ := m.Write()
-	message, err := data.readMessage()
-	Logger.Printf(">>> %d - %s - hex=%x", c.Numero, m.ProtocolOpName(), message)
+	Logger.Printf(">>> %d - %s - hex=%x", c.Numero, m.ProtocolOpName(), data.Bytes())
 	c.bw.Write(data.Bytes())
 	c.bw.Flush()
 }
