@@ -200,7 +200,7 @@ func (c *client) close() {
 func (c *client) writeMessage(m *ldap.LDAPMessage) {
 	data, _ := m.Write()
 	
-	//Logger.Printf(">>> %d,%d - %s - text=%s", c.Numero,i, m.ProtocolOpName(), data.Bytes())
+	Logger.Printf(">>> %d - %s - text=%s", c.Numero, m.ProtocolOpName(), data)
 	
 	c.bw.Write(data.Bytes())
 	c.bw.Flush()
